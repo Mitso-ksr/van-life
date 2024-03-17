@@ -1,13 +1,12 @@
-import { Outlet } from 'react-router-dom'
-import Footer from './Footer'
+import React from "react"
+import { Outlet } from "react-router-dom"
 import Header from './Header'
 
-export default function Layout () {
+export default function Layout() {
     return (
         <>
-            <Header />
-            <Outlet />
-            <Footer />
+        <Header />
+        <Outlet />
         </>
     )
 }
