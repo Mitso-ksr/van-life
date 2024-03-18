@@ -317,3 +317,26 @@ i[class*='van-type-'] {
     text-decoration: underline;
     font-weight: 600;
 }
+
+.host-van-container {
+    margin: 5px 10px;
+    background-color: #FFFFFF;
+    height: 102px;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+}
+
+.host-van-container-main {
+    display: flex;
+    justify-content: flex-start;
+    height: 66px;
+    gap:10px;
+    align-items: center;
+
+}
+
+.host-van-container-main > img {
+    height: 66px;
+    width: 66px;
+}
