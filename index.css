@@ -318,25 +318,40 @@ i[class*='van-type-'] {
     font-weight: 600;
 }
 
-.host-van-container {
-    margin: 5px 10px;
-    background-color: #FFFFFF;
-    height: 102px;
-    display: flex;
-    align-items: center;
-    padding-left: 26px;
+.host-van-link-wrapper {
+    color: unset;
+    text-decoration: unset;
 }
 
-.host-van-container-main {
-    display: flex;
-    justify-content: flex-start;
-    height: 66px;
-    gap:10px;
-    align-items: center;
-
+.host-vans-list {
+    padding-inline: 26px;
 }
 
-.host-van-container-main > img {
-    height: 66px;
-    width: 66px;
+.host-vans-title {
+    padding-inline: 26px;
+}
+
+.host-van-single {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 15px;
+    padding-block: 18px;
+    padding-left: 24px;
+}
+
+.host-van-single > img {
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 17px;
+}
+
+.host-van-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-block: 10px;
+}
+
+.host-van-info p {
+    margin-block: 10px;
 }
