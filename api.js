@@ -13,9 +13,7 @@ export  async function getVans() {
     return data.vans
 }
 
-// fetch(`/api/vans/${params.id}`)
-// .then(res => res.json())
-// .then(data => setVan(data.vans))
+
 export async function getVan(id) {
     const response = await fetch(`/api/vans/${id}`)
     if (!response.ok) {
@@ -31,11 +29,6 @@ export async function getVan(id) {
 }
 
 
-// React.useEffect(() => {
-//     fetch("/api/host/vans")
-//         .then(res => res.json())
-//         .then(data => setVans(data.vans))
-// }, [])
 export async function getHostVans() {
     const response = await fetch('/api/host/vans')
     if (!response.ok){
@@ -50,11 +43,7 @@ export async function getHostVans() {
     return data.vans
 }
 
-// React.useEffect(() => {
-//     fetch(`/api/host/vans/${id}`)
-//         .then(res => res.json())
-//         .then(data => setCurrentVan(data.vans))
-// }, [])
+
 
 export async function getHostVan(id) {
     const response = await fetch(`/api/host/vans/${id}`)
@@ -67,4 +56,20 @@ export async function getHostVan(id) {
     }
     const data = await response.json()
     return data.vans
+}
+
+export async function LoginUser(creds) {
+    const response = await fetch('/api/login', 
+    {method: "post" , body: JSON.stringify(creds)}
+    )
+    const data = await response.json()
+
+    if (!response.ok) {
+        throw {
+            message: data.message,
+            statusText: response.statusText,
+            status: response.status
+        }
+    }
+    return data
 }
