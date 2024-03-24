@@ -58,6 +58,7 @@ header a:hover {
 
 nav {
     display: flex;
+    justify-items: center;
 }
 
 main {
@@ -533,4 +534,19 @@ i[class*='van-type-'] {
 
 .login-first {
     color: red;
+}
+
+.login-button:disabled {
+    background-color: #4D4D4D;
+}
+.logout-button{
+    width: 80px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 700;
+    color:  rgb(22, 22, 22);
+    font-family: "Inter", sans-serif;
+    background-color: #E17654;
+    border-radius: 10px;
+    margin-right: 20px;
 }
