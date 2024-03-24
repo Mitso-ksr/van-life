@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, NavLink , useNavigate} from "react-router-dom"
 import imageUrl from "/assets/images/avatar-icon.png"
+import { FiLogOut } from "react-icons/fi";
 
 export default function Header() {
     const activeStyles = {
@@ -41,7 +42,7 @@ export default function Header() {
                         className="login-icon"
                     />
                 </Link>
-                {localStorage.getItem("loggedIn") && <button className = 'logout-button' onClick={fakeLogOut}>Log Out</button>}
+                {localStorage.getItem("loggedIn") && <button className = 'logout-button' onClick={fakeLogOut}><FiLogOut /></button>}
             </nav>
         </header>
     )
