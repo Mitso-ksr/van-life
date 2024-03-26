@@ -14,7 +14,7 @@ export default function VanDetail() {
             setLoading(true)
             try {
                 const data = await getVan(params.id)
-                setVan(data.vans)
+                setVan(data)
             } catch (error) {
                 setError(error)
             } finally{
