@@ -47,14 +47,14 @@ export default function Login() {
                     name='email'
                     onChange={handleChange}
                     type='email'
-                    placeholder='Email address'
+                    placeholder='Enter mitso@gmail.com to continue'
                     value={loginFormData.email}
                 />
                 <input
                     name='password'
                     onChange={handleChange}
                     type='password'
-                    placeholder='Password'
+                    placeholder='Enter 123 to continue'
                     value={loginFormData.password}
                 />
                 <button className='login-button' disabled={status === 'submitting' ? true : false}>

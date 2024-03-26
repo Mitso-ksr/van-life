@@ -4,8 +4,8 @@ import { getHostVan } from '../../api';
 
 export default function HostVanDetail() {
     const { id } = useParams();
-    const [currentVan, setCurrentVan] = React.useState([]);
-    const [loading, setLoading] = React.useState(false);
+    const [currentVan, setCurrentVan] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
 
     const activeStyles = {
@@ -14,13 +14,13 @@ export default function HostVanDetail() {
         color: '#161616',
     };
 
-    
     React.useEffect(() => {
+        console.log("in useEffect")
         async function loadHostVan() {
             setLoading(true);
             try {
                 const data = await getHostVan(id);
-                setCurrentVan(data)
+                setCurrentVan(data);
             } catch (error) {
                 setError(error);
             } finally {
@@ -29,8 +29,7 @@ export default function HostVanDetail() {
         }
 
         loadHostVan();
-    }, [])
-
+    }, []);
 
     if (loading) {
         return <h1>Loading...</h1>;

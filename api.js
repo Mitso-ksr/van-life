@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, getDoc, doc} from 'firebase/firestore/lite'
+import {getFirestore, collection, getDocs, getDoc, doc, query,where} from 'firebase/firestore/lite'
 const firebaseConfig = {
   apiKey: "AIzaSyDShbyW3WO2faC1Ie_fwK13Llnq7VQtCis",
   authDomain: "vanlife-c4ba7.firebaseapp.com",
@@ -15,7 +15,6 @@ const db = getFirestore(app)
 
 
 const vansCollectionRef = collection(db, "vans")
-
 
 
 
@@ -64,37 +63,55 @@ export async function getVan(id) {
 
 }
 
-
 export async function getHostVans() {
-    const response = await fetch('/api/host/vans')
-    if (!response.ok){
-        throw {
-            message: "Failed to fetch host vans",
-            StatusText: response.statusText,
-            status: response.status
-        }
-    }
+    // const q = query(collection(db, "cities"), where("capital", "==", true));
+    const q = query(vansCollectionRef , where("hostId" , "==" , "123"))
+    const querySnapshot = await getDocs(q);
+    const hostVans = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id,
+    }))
+    return hostVans
+    // const response = await fetch('/api/host/vans')
+    // if (!response.ok){
+    //     throw {
+    //         message: "Failed to fetch host vans",
+    //         StatusText: response.statusText,
+    //         status: response.status
+    //     }
+    // }
 
-    const data = await response.json();
-    return data.vans
+    // const data = await response.json();
+    // return data.vans
 }
 
 
 
 export async function getHostVan(id) {
-    const response = await fetch(`/api/host/vans/${id}`)
-    if (!response.ok) {
-        throw {
-            message: "failed to fetch host van item",
-            statusText: response.statusText,
-            status: response.status
-        }
-    }
-    const data = await response.json()
-    return data.vans
+
+    const q = query(vansCollectionRef, where("hostId", "==" , "123"))
+    const querySnapshot = await getDocs(q)
+    const hostVans = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id,
+    }))
+    const hostVan = hostVans.filter(vans => vans.id === id)[0]
+    return hostVan
+
+    // const response = await fetch(`/api/host/vans/${id}`)
+    // if (!response.ok) {
+    //     throw {
+    //         message: "failed to fetch host van item",
+    //         statusText: response.statusText,
+    //         status: response.status
+    //     }
+    // }
+    // const data = await response.json()
+    // return data.vans
 }
 
 export async function loginUser(creds) {
+
     const res = await fetch("/api/login",
         { method: "post", body: JSON.stringify(creds) }
     )

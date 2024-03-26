@@ -36,12 +36,12 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
-                <Link to="login" className="login-link">
+                {!localStorage.getItem("loggedIn") && <Link to="login" className="login-link">
                     <img 
                         src={imageUrl}
                         className="login-icon"
                     />
-                </Link>
+                </Link> }
                 {localStorage.getItem("loggedIn") && <button className = 'logout-button' onClick={fakeLogOut}><FiLogOut /></button>}
             </nav>
         </header>
